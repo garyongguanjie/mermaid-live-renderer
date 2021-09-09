@@ -1,0 +1,31 @@
+<html>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+        <script>
+            'mermaid.initialize({ startOnLoad: true });'
+        </script>
+        <div id="graph" class="mermaid">
+        graph TD
+            A[Christmas] -->|Get money| B(Go shopping)
+            B --> C{Let me think}
+            C -->|One| D[Laptop]
+            C -->|Two| E[iPhone]
+            C -->|Three| F[fa:fa-car Car]
+       </div>
+       <script>
+        const parseUrlQuery = (value) => {
+            var urlParams = new URL(value).searchParams
+            return Array.from(urlParams.keys()).reduce((acc, key) => {
+                acc[key] = urlParams.getAll(key)
+                return acc
+            }, {})
+        }
+        let x = parseUrlQuery(window.location.href);
+        if (x.graph){
+            let graph = x.graph[0];
+            console.log(atob(decodeURIComponent(graph)))
+            document.getElementById("graph").innerHTML = atob(decodeURIComponent(graph));
+        }
+        </script>
+    </body>
+</html>
